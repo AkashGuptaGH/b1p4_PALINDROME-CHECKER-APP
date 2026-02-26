@@ -22,4 +22,16 @@ public class PalindromeCheckerApp {
             System.out.println("UC2: Not a Palindrome");
         }
     }
+    // UC3 – Reverse Using Loop
+    public static void reverseUsingLoop(String word) {
+        String reversed = "";
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed += word.charAt(i);
+        }
+        if (word.equals(reversed)) {
+            System.out.println("UC3: Reverse Loop → Palindrome");
+        } else {
+            System.out.println("UC3: Not Palindrome");
+        }
+    }
 }
