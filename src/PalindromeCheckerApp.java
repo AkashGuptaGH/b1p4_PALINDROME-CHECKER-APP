@@ -1,3 +1,4 @@
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -78,5 +79,22 @@ public class PalindromeCheckerApp {
 
         if (isPalindrome) System.out.println("UC6: Queue vs Stack → Palindrome");
         else System.out.println("UC6: Not Palindrome");
+    }
+    // UC7 – Deque Approach
+    public static void dequePalindrome(String word) {
+        Deque<Character> deque = new LinkedList<>();
+
+        for (char ch : word.toCharArray()) deque.add(ch);
+
+        boolean isPalindrome = true;
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) System.out.println("UC7: Deque → Palindrome");
+        else System.out.println("UC7: Not Palindrome");
     }
 }
