@@ -1,11 +1,12 @@
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
-        displayWelcomeMessage();  // UC1
-        hardcodedPalindrome();    // UC2
+        displayWelcomeMessage();   // UC1
+        hardcodedPalindrome();     // UC2
+        reverseUsingLoop("madam"); // UC3
+        twoPointerCheck("madam");  // UC4
     }
 
-    // UC1 – Welcome Message
     public static void displayWelcomeMessage() {
         System.out.println("===================================");
         System.out.println("Palindrome Checker App");
@@ -13,25 +14,33 @@ public class PalindromeCheckerApp {
         System.out.println("===================================");
     }
 
-    // UC2 – Hardcoded Palindrome
     public static void hardcodedPalindrome() {
         String word = "madam";
-        if (word.equals("madam")) {
-            System.out.println("UC2: Hardcoded check → It is a Palindrome");
-        } else {
-            System.out.println("UC2: Not a Palindrome");
-        }
+        if (word.equals("madam")) System.out.println("UC2: Hardcoded check → It is a Palindrome");
+        else System.out.println("UC2: Not a Palindrome");
     }
-    // UC3 – Reverse Using Loop
+
     public static void reverseUsingLoop(String word) {
         String reversed = "";
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed += word.charAt(i);
+        for (int i = word.length() - 1; i >= 0; i--) reversed += word.charAt(i);
+        if (word.equals(reversed)) System.out.println("UC3: Reverse Loop → Palindrome");
+        else System.out.println("UC3: Not Palindrome");
+    }
+
+    // UC4 – Two Pointer Technique
+    public static void twoPointerCheck(String word) {
+        char[] arr = word.toCharArray();
+        int left = 0, right = arr.length - 1;
+        boolean isPalindrome = true;
+        while (left < right) {
+            if (arr[left] != arr[right]) {
+                isPalindrome = false;
+                break;
+            }
+            left++;
+            right--;
         }
-        if (word.equals(reversed)) {
-            System.out.println("UC3: Reverse Loop → Palindrome");
-        } else {
-            System.out.println("UC3: Not Palindrome");
-        }
+        if (isPalindrome) System.out.println("UC4: Two Pointer → Palindrome");
+        else System.out.println("UC4: Not Palindrome");
     }
 }
