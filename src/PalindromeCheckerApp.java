@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class PalindromeCheckerApp {
@@ -56,5 +58,25 @@ public class PalindromeCheckerApp {
 
         if (word.equals(reversed)) System.out.println("UC5: Stack → Palindrome");
         else System.out.println("UC5: Not Palindrome");
+    }
+    public static void queueVsStack(String word) {
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
+
+        for (char ch : word.toCharArray()) {
+            queue.add(ch);
+            stack.push(ch);
+        }
+
+        boolean isPalindrome = true;
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if (isPalindrome) System.out.println("UC6: Queue vs Stack → Palindrome");
+        else System.out.println("UC6: Not Palindrome");
     }
 }
