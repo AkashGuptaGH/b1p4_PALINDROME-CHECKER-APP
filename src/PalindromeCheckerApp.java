@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
@@ -5,6 +7,7 @@ public class PalindromeCheckerApp {
         hardcodedPalindrome();     // UC2
         reverseUsingLoop("madam"); // UC3
         twoPointerCheck("madam");  // UC4
+        stackPalindrome("madam");  // UC5
     }
 
     public static void displayWelcomeMessage() {
@@ -27,7 +30,6 @@ public class PalindromeCheckerApp {
         else System.out.println("UC3: Not Palindrome");
     }
 
-    // UC4 – Two Pointer Technique
     public static void twoPointerCheck(String word) {
         char[] arr = word.toCharArray();
         int left = 0, right = arr.length - 1;
@@ -42,5 +44,17 @@ public class PalindromeCheckerApp {
         }
         if (isPalindrome) System.out.println("UC4: Two Pointer → Palindrome");
         else System.out.println("UC4: Not Palindrome");
+    }
+
+    // UC5 – Stack Approach
+    public static void stackPalindrome(String word) {
+        Stack<Character> stack = new Stack<>();
+        for (char ch : word.toCharArray()) stack.push(ch);
+
+        String reversed = "";
+        while (!stack.isEmpty()) reversed += stack.pop();
+
+        if (word.equals(reversed)) System.out.println("UC5: Stack → Palindrome");
+        else System.out.println("UC5: Not Palindrome");
     }
 }
